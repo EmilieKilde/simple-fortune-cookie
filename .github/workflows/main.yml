@@ -79,6 +79,11 @@ jobs:
         echo "${{ secrets.VERY_SECRET_NAME }}" > ~/.kube/config
         chmod 600 ~/.kube/config
 
+    #the code below should work, i just dont know our cluster etc
+     #- name: Deploy application
+      # run: |
+       # kubectl config use-context my-cluster-context
+       # kubectl apply -f 
 
   
       
