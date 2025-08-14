@@ -3,14 +3,15 @@ on: push
 jobs:
   build: 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - name: Clone down repository
-        uses: actions/checkout@v4       
-      - name: Build go-build
-        run: go build
-      - name: run backend
-        run: backend
-      - name: run frontend
-        run: frontend
+        uses: actions/checkout@v4   
+      - name: setup go
+        uses: actions/setup-go@v5
+      - name: Build
+        run: go build ./...
       
     
