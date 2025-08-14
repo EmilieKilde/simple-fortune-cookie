@@ -44,6 +44,7 @@ jobs:
       - name: login to docker hub
         uses: docker/login-action@v3
         with:
+          registry: ghcr.io
           username: ${{env.docker_username}}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build and push backend docker-image
