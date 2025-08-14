@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-go@v5
       - name: Build
         run: go build ./...
+      - name: Test frontend
+        run: go test ./main_test.go
 
   
       
