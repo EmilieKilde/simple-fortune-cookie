@@ -1,8 +1,6 @@
 name: Main workflow
 on: push
 env: 
-  docker_username: nannaluie 
-  docker_password: ${{ secrets.DOCKERHUB_TOKEN }}
   GIT_COMMIT: ${{ github.workflow_sha }}
 jobs:
   build: 
@@ -42,7 +40,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: nannaluie
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build and push backend docker-image
         uses: docker/build-push-action@v6
