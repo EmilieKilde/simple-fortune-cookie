@@ -44,6 +44,7 @@ jobs:
         with:
           context: .
           push: true
+          tags: nannaluie/simple-fortune-cookie:latest
         
     
 
