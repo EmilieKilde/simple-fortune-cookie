@@ -42,13 +42,13 @@ jobs:
       - name: build and push backend docker-image
         uses: docker/build-push-action@v6
         with:
-          context: simple-fortune-cookie/backend/...
+          context: simple-fortune-cookie/backend/Dockerfile
           push: true
           tags: nannaluie/simple-fortune-cookie-backend:latest
       - name: build and push frontend docker-image
         uses: docker/build-push-action@v6
         with:
-          context: simple-fortune-cookie/frontend/...
+          context: simple-fortune-cookie/frontend/Dockerfile
           push: true
           tags: nannaluie/simple-fortune-cookie-frontend:latest
 
