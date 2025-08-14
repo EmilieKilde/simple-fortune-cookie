@@ -1,7 +1,7 @@
 name: Main workflow
 on: push
 env: 
-  docker_username: nannaluie
+  docker_username: emiliekilde
   docker_password: ${{ secrets.GITHUB_TOKEN }}
   GIT_COMMIT: ${{ github.workflow_sha }}
 jobs:
@@ -52,13 +52,13 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ghcr.io/nannaluie/simple-fortune-cookie-backend:latest
+          tags: ghcr.io/emiliekilde/simple-fortune-cookie-backend:latest
       - name: build and push frontend docker-image
         uses: docker/build-push-action@v6
         with:
           context: ./frontend
           push: true
-          tags: ghcr.io/nannaluie/simple-fortune-cookie-frontend:latest
+          tags: ghcr.io/emiliekilde/simple-fortune-cookie-frontend:latest
 
   
       
