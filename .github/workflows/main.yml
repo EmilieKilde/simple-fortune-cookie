@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: go build ./...
       - name: Test frontend
-        run: go test ./main_test.go
+        run: go test ./...
 
   
       
