@@ -13,5 +13,20 @@ jobs:
         uses: actions/setup-go@v5
       - name: Build
         run: go build ./...
+        
+  build-frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Clone down repository
+        uses: actions/checkout@v4   
+      - name: setup go
+        uses: actions/setup-go@v5
+      - name: Build
+        run: go build ./...
+
+  
       
     
