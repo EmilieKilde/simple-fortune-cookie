@@ -90,7 +90,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: apply database
         run: |
-             kubectl apply -f redis-deployment-and-service.yaml
+             cd $GITHUB_WORKSPACE
+             kubectl apply -f redis-deployment-and-service.yaml --validate=false
   #Deploy-to-Kubernetes:
    # runs-on: ubuntu-latest
     #steps:
