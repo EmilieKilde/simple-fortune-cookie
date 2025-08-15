@@ -18,5 +18,5 @@
           - containerPort: 8080
           env:
             - name: REDIS_DNS
-              value: "redis-service"
+              value: "redis-service:8080"
   
