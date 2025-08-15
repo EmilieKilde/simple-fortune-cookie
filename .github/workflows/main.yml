@@ -91,7 +91,7 @@ jobs:
       - name: apply database
         run: |
              cd $GITHUB_WORKSPACE
-             kubectl apply -f redis-deployment-and-service.yaml --validate=false
+             kubectl apply -f redis-deployment-and-service.yaml
   #Deploy-to-Kubernetes:
    # runs-on: ubuntu-latest
     #steps:
