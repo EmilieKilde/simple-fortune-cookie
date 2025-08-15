@@ -68,16 +68,28 @@ jobs:
         run: docker pull ghcr.io/emiliekilde/simple-fortune-cookie-frontend:latest
       - name: Run container
         run: docker run --rm -d -p 8080:8080 ghcr.io/emiliekilde/simple-fortune-cookie-frontend:latest
+ 
   Deploy-to-Kubernetes:
-    runs-on: ubuntu-latest
-    steps:
-     - name: Checkout code
-       uses: actions/checkout@v4
-     - name: Set up kubeconfig
-       run: |
-        mkdir -p ~/.kube
-        echo "${{ secrets.VERY_SECRET_NAME }}" > ~/.kube/config
-        chmod 600 ~/.kube/config
+      runs-on: ubuntu-latest
+      needs: [Docker-image] 
+      steps:
+       - name: Checkout code
+         uses: actions/checkout@v4
+       - name: Set up kubeconfig
+         run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
+       - name: Deploy to Kubernetes
+         run: kubectl --kubeconfig kubeconfig apply -f ./
+  
+  #Deploy-to-Kubernetes:
+   # runs-on: ubuntu-latest
+    #steps:
+     #- name: Checkout code
+      # uses: actions/checkout@v4
+     #- name: Set up kubeconfig
+      # run: |
+       # mkdir -p ~/.kube
+        #echo "${{ secrets.VERY_SECRET_NAME }}" > ~/.kube/config
+        #chmod 600 ~/.kube/config
 
     #the code below should work, i just dont know our cluster etc
      #- name: Deploy application
@@ -86,16 +98,7 @@ jobs:
        # kubectl apply -f 
     
 #I think this should work for exercise 04-cd   
-  #Deploy-to-Kubernetes:
-   # runs-on: ubuntu-latest
-    #needs: [Docker-image] 
-    #steps:
-     #- name: Checkout code
-      # uses: actions/checkout@v4
-     #- name: Set up kubeconfig
-      # run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
-     #- name: Deploy to Kubernetes
-      # run: kubectl --kubeconfig kubeconfig apply -f your-k8s-manifests.yaml
+
 
   
       
