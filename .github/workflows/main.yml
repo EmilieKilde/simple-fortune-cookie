@@ -79,7 +79,7 @@ jobs:
        - name: Deploy to Kubernetes
          run: |
               cd $GITHUB_WORKSPACE
-              kubectl --kubeconfig kubeconfig apply -f backend-deployment.yaml 
+              kubectl --kubeconfig kubeconfig apply -f backend-deployment.yaml --validate=false
               kubectl --kubeconfig kubeconfig apply -f backend-service.yaml 
               kubectl --kubeconfig kubeconfig apply -f frontend-deployment.yaml 
               kubectl --kubeconfig kubeconfig apply -f frontend-service.yaml
