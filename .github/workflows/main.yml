@@ -83,7 +83,14 @@ jobs:
               kubectl --kubeconfig kubeconfig apply -f backend-service.yaml 
               kubectl --kubeconfig kubeconfig apply -f frontend-deployment.yaml 
               kubectl --kubeconfig kubeconfig apply -f frontend-service.yaml
-  
+  Deploy-Database:
+    runs-on: ubuntu-latest
+    needs: Deploy-to-Kubernetes
+    steps:
+      - uses: actions/checkout@v4
+      - name: apply database
+        run: |
+             kubectl apply -f redis-deployment-and-service.yaml
   #Deploy-to-Kubernetes:
    # runs-on: ubuntu-latest
     #steps:
