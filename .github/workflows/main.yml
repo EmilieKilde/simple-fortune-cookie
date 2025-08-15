@@ -75,7 +75,7 @@ jobs:
       steps:
        - uses: actions/checkout@v4
        - name: Set up kubeconfig
-         run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
+         run: echo "${{ secrets.VERY_SECRET_NAME }}" | base64 -d > kubeconfig
        - name: Deploy to Kubernetes
          run: |
               cd $GITHUB_WORKSPACE
