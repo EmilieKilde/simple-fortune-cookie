@@ -79,7 +79,7 @@ jobs:
          run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
        - name: Deploy to Kubernetes
          run: kubectl --kubeconfig kubeconfig apply -f backend-deployment.yaml -f backend-service.yaml -f frontend-deployment.yaml -f frontend-service.yaml --validate=false
-  
+  #Tried starting a localhost cluster via Docker Desktop
   #Deploy-to-Kubernetes:
    # runs-on: ubuntu-latest
     #steps:
