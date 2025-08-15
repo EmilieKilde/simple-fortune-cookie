@@ -15,11 +15,11 @@
         containers:
           - name: redis
             image: redis:7-alpine
-            ports:
-              - containerPort: 6379
             volumeMounts:
               - name: redis
                 mountPath: /data
+            ports:
+              - containerPort: 6379
         volumes:
           - name: redis
             emptyDir: {}
@@ -31,7 +31,7 @@
   spec:
     type: LoadBalancer
     ports:
-      - port: 6379
+        port: 80
         targetPort: 6379
     selector:
       app: redis
