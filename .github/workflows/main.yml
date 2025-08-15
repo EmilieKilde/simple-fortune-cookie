@@ -83,7 +83,19 @@ jobs:
               kubectl --kubeconfig kubeconfig apply -f backend-service.yaml 
               kubectl --kubeconfig kubeconfig apply -f frontend-deployment.yaml 
               kubectl --kubeconfig kubeconfig apply -f frontend-service.yaml
-  
+  Deploy-Database:
+    runs-on: ubuntu-latest
+    needs: Deploy-to-Kubernetes
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up kubeconfig
+        run: echo "${{ secrets.VERY_SECRET_NAME }}" | base64 -d > kubeconfig
+      - name: deploy database
+        env: 
+          KUBECONFIG: ./kubeconfig
+        run: |
+             cd $GITHUB_WORKSPACE
+             kubectl apply -f redis-deployment-and-service.yaml --validate=false
   #Deploy-to-Kubernetes:
    # runs-on: ubuntu-latest
     #steps:
