@@ -1,5 +1,6 @@
 APP_URL="http://localhost:8080"
-
+docker compose -f "docker-compose.yaml" up -d
+sleep 10
 echo "Connection to $APP_URL test"
 
 STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$APP_URL" || true)
